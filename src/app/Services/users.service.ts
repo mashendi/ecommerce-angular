@@ -8,9 +8,9 @@ export class UsersService {
 
   constructor(private myClient: HttpClient) { }
 
-  baseUrl = "http://localhost/ecommerce";
+  baseUrl = "http://localhost:5000/api";
 
-  AddNewUser(user:any){
-    return this.myClient.post(this.baseUrl, user)
+  Register(user:any){
+    return this.myClient.post(this.baseUrl+"/register", user )
   }
 }

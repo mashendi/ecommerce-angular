@@ -9,10 +9,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RegisterComponent, HeroComponent],
-  imports: [BrowserModule, FontAwesomeModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FontAwesomeModule, FormsModule, HttpClientModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
