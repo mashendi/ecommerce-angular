@@ -42,6 +42,26 @@
                                         <div *ngIf="!Password" class="form-control alert alert-danger text-center">not valid</div>
 
                                 </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input formControlName="image" type="file" class="form-control" id="name" name="image" value=""
+                                         [(ngModel)]= "image" (change)="onFileSelected($event)">
+                                        <div *ngIf="!Image" class="form-control alert alert-danger text-center">not valid</div>
+
+                                </div>
+                                <!-- <div class="col-md-12 form-check form-check-inline p_star"> -->
+                                    <!-- <input  type="checkbox" class="form-check-input" id="name" name="gender" value="" -->
+                                         <!-- [(ngModel)]= "gender"> -->
+                                         <!-- <label class="form-check-label" for="inlineCheckbox3">Male</label> -->
+                                        <!-- <div *ngIf="!Password" class="form-control alert alert-danger text-center">not valid</div> -->
+
+                                <!-- </div> -->
+                                <!-- <div class="col-md-12 form-check form-check-inline p_star"> -->
+                                    <!-- <input  type="checkbox" class="form-check-input" id="name" name="gender" value="" -->
+                                         <!-- [(ngModel)]= "gender"> -->
+                                         <!-- <label class="form-check-label" for="inlineCheckbox3">Female</label> -->
+                                        <!-- <div *ngIf="!Password" class="form-control alert alert-danger text-center">not valid</div> -->
+
+                                <!-- </div> -->
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         <input type="checkbox" id="f-option" name="selector">

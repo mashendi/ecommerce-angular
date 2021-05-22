@@ -17,7 +17,9 @@ export class RegisterComponent implements OnInit {
    ourValidation = new FormGroup({
     username : new FormControl("", Validators.required),
     email : new FormControl("", [Validators.required,Validators.email]),
-    password : new FormControl("",[Validators.required,Validators.min(6)])
+    password : new FormControl("",[Validators.required,Validators.min(6)]),
+    image : new FormControl("", Validators.required),
+
   }) 
 
  /*  Add(username:any , email:any , password:any){
@@ -29,6 +31,8 @@ export class RegisterComponent implements OnInit {
   username:any
   email:any
   password:any
+  image:any
+  gender:any
   
   get UserName(){
 
@@ -45,18 +49,30 @@ export class RegisterComponent implements OnInit {
     return this.ourValidation.controls.password.valid;
   }
 
-  
+  get Image(){
+    
+    return this.ourValidation.controls.image.valid;
+  }
+
+  selectedFile = null;
+
+  onFileSelected(event:any){
+    // console.log(event)
+    this.selectedFile = event.target.files[0].name;
+  }
 
   Register(){
 
     // if(this.ourValidation.valid){}
-    
+
     if(this.UserName && this.Email && this.Password){
 
       let user = {
       username:this.username,
       email:this.email,
-      password:this.password
+      password:this.password,
+      image: this.selectedFile,
+      gender: this.gender
     } 
      console.log("register")
     this.myService.Register(user).subscribe(
