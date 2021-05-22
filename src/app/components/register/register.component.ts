@@ -19,12 +19,11 @@ export class RegisterComponent implements OnInit {
     email : new FormControl("", [Validators.required,Validators.email]),
     password : new FormControl("",[Validators.required,Validators.min(6)]),
     image : new FormControl("", Validators.required),
+    gender : new FormControl("", Validators.required)
+
 
   }) 
 
- /*  Add(username:any , email:any , password:any){
-
-  } */
 
   title:string = "Register"
 
@@ -54,25 +53,39 @@ export class RegisterComponent implements OnInit {
     return this.ourValidation.controls.image.valid;
   }
 
+  get Gender(){
+  
+    return this.ourValidation.controls.gender.valid;
+  }
+
   selectedFile = null;
 
   onFileSelected(event:any){
     // console.log(event)
     this.selectedFile = event.target.files[0].name;
   }
+  selectedGender = null
+  /* genders:any = [
+    'Male',
+    'Female'
+  ] */
+  radioChangeHandler(event:any){
+    this.selectedGender = event.target.value;
+    // console.log(this.selectedGender)
+  }
 
   Register(){
 
     // if(this.ourValidation.valid){}
 
-    if(this.UserName && this.Email && this.Password){
+    if(this.UserName && this.Email && this.Password && this.Image){
 
       let user = {
       username:this.username,
       email:this.email,
       password:this.password,
       image: this.selectedFile,
-      gender: this.gender
+      gender: this.selectedGender
     } 
      console.log("register")
     this.myService.Register(user).subscribe(
