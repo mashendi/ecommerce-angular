@@ -61,7 +61,7 @@
       </div>
       <div class="row">
         <app-product
-          *ngFor="let product of products"
+          *ngFor="let product of products.slice(0, 3)"
           [product]="product"
           class="col-xl-4 col-lg-4 col-md-6 col-sm-6"
         ></app-product>
@@ -132,7 +132,7 @@
       <div class="row">
         <app-product
           class="col-xl-4 col-lg-4 col-md-6 col-sm-6"
-          *ngFor="let product of products"
+          *ngFor="let product of products.slice(0, 6)"
           [product]="product"
           [addToCart]="true"
         >
