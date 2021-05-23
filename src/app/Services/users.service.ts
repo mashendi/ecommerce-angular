@@ -10,7 +10,7 @@ export class UsersService {
 
   baseUrl = "http://localhost:5000/api";
 
-  Register(user:any){
-    return this.myClient.post(this.baseUrl+"/register", user )
+  Register(user: any) {
+    return this.myClient.post(this.baseUrl + "/register", user)
   }
 }
