@@ -12,4 +12,15 @@ export class ProductComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  addItem(product: any) {
+    if (!localStorage.getItem('cart_products')) {
+      localStorage.setItem('cart_products', '');
+    }
+
+    const cartProducts = localStorage.getItem('cart_products');
+    cartProducts === ''
+      ? localStorage.setItem('cart_products', product._id)
+      : localStorage.setItem('cart_products', `${cartProducts},${product._id}`);
+  }
 }
