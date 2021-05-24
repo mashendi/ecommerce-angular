@@ -45,15 +45,16 @@
               </td>
               <td>
                 <div class="product_count">
-                  <span class="input-number-decrement" style="display:inline-block" (click)="decrese(c,newww)" > <i class="ti-minus" ></i></span>
 
-                  <input class="input-number" [(ngModel)]="quantity"  type="text" #newww [value]="quantity" min="0" max="10">
+                  <span class="input-number-decrement" style="display:block;cursor:pointer" (click)="decrese($event,c)" > <i class="ti-minus"></i></span>
 
-                  <span class="input-number-increment" style="display:inline-block" (click)="incrses(c,newww)"> <i class="ti-plus"></i></span>
+                  <input class="input-number" value="1" type="text" #newww  min="0" max="10">
+
+                  <span class="input-number-increment" style="display:block;cursor:pointer" (click)="incrses($event,c)"> <i class="ti-plus"></i></span>
                 </div>
               </td>
               <td>
-                <h5 [(ngModel)]="calc">{{calc}}</h5>
+                <h5>{{calc}}</h5>
               </td>
             </tr>
 

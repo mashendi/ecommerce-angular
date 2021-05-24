@@ -5,11 +5,11 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class CartService {
-url="http://localhost:5016/api/orders"
+url="http://localhost:5001/api/orders"
   constructor(private httpClient:HttpClient) { }
 
   getProducts( ids:string ){
-    return this.httpClient.get(`http://localhost:5016/api/products?ids=${ids}`)
+    return this.httpClient.get(`http://localhost:5001/api/products?ids=${ids}`)
   }
 
 

@@ -8,7 +8,7 @@ import {CartService} from '../../services/cart.service'
 })
 export class CartComponent implements OnInit {
     counter: any = 1;
-    calc: any = 360;
+    calc: any = 120;
     proudacts: any;
     productsIds = [];
     quantity:any=1;
@@ -47,26 +47,42 @@ export class CartComponent implements OnInit {
 
 
 
-    incrses(event:any,tt:any) {
-        console.log(tt);
-       ++this.quantity
-       console.log(event.price*this.quantity)
-       //  this.counter++;
-       //
-       //  var x = ++this.counter;
-       this.calc = event.price * this.quantity;
+    incrses(e:any,c:any) {
+       let nextsibling;
+
+        var x= e.target.parentNode.children[1].value=++this.counter;
+       // console.log(x=x++);
+         this.calc = c.price * x;
+       //  console.log(e.target.parentNode.parentNode.nextSibling)
+       // nextsibling=e.target.parentNode.parentNode.nextSibling;
+        // nextsibling=this.calc;
+
+
+        //  console.log(tt);
+        // ++this.quantity
+        // console.log(event.price*this.quantity)
+        // //  this.counter++;
+        // //
+        // //  var x = ++this.counter;
+
+
+        //console.log(e);
 
     }
 
-    decrese(e:any,yy:any) {
-        console.log(yy);
 
-        if (this.quantity > 0) {
-            var x = --this.quantity;
-           this.calc = x * e.price;
 
-        }
-        // var x=  this.value--;
+
+    decrese(e:any,c:any) {
+
+        // console.log(yy);
+
+         if (this.quantity > 0) {
+        var x= e.target.parentNode.children[0].value=--this.counter;
+           this.calc = c.price * x;
+
+         }
+        // // var x=  this.value--;
 
 
     }
@@ -74,10 +90,15 @@ export class CartComponent implements OnInit {
 
     //add addOrder
     addOrder(){
+        //let userId = JSON.parse(<string>window.localStorage.getItem('id'))
+
         let orders={
-            user:"60a978a20bf889489004a308",//local storge
-            quantity:this.quantity,
-            products:this.productsIds,
+            user:"60aae78105cfa58ff2efc5ee",  //local storge
+            products:{
+                product_id:this.productsIds,
+                quantity:this.counter
+
+            },
             totalPrice:this.calc,
 
         }
