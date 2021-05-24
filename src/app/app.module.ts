@@ -9,13 +9,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/cart/cart.component';
 import { ProductComponent } from './components/product/product.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeroComponent } from './components/hero/hero.component';
 
 @NgModule({
-
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, LoginComponent, HeroComponent, ProductComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, LoginComponent, HeroComponent, ProductComponent, CartComponent],
   imports: [BrowserModule, FontAwesomeModule,FormsModule,HttpClientModule,ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
