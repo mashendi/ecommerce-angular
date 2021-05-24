@@ -43,6 +43,25 @@ export class CartComponent implements OnInit {
         // this.x = localStorage.setItem("product",  JSON.stringify(this.fruits));
 
     }
+    decrese(e: any, c: any) {
+        let nextsibling;
+        let total;
+        // console.log(yy);
+
+        if (this.counter > 0) {
+            let x = e.target.parentNode.children[1].value = --this.counter;
+            console.log(e.target.parentNode.children[1]);
+            console.log(x)
+            total = c.price * x;
+            nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
+
+            console.log(nextsibling);
+
+        }
+        // // var x=  this.value--;
+
+
+    }
 
 
     incrses(e: any, c: any) {
@@ -70,25 +89,6 @@ export class CartComponent implements OnInit {
     }
 
 
-    decrese(e: any, c: any) {
-        let nextsibling;
-        let total;
-        // console.log(yy);
-
-        if (this.counter > 0) {
-            let x = e.target.parentNode.children[0].value =--this.counter;
-            console.log(e.target.parentNode.children[0]);
-            console.log(x)
-            total = c.price * x;
-            nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
-
-            console.log(nextsibling);
-
-        }
-        // // var x=  this.value--;
-
-
-    }
 
 
     //add addOrder
