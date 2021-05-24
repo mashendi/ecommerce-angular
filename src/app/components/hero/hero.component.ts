@@ -12,6 +12,5 @@ export class HeroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() hero_title:any;
-
+  @Input() hero_title:any
 }

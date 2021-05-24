@@ -13,4 +13,8 @@ export class UsersService {
   Register(user: any) {
     return this.myClient.post(this.baseUrl + "/register", user)
   }
+
+  Login(user:any){
+    return this.myClient.post(this.baseUrl+"/login", user,{withCredentials:true})
+  }
 }

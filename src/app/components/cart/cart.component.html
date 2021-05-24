@@ -1,0 +1,75 @@
+<app-header></app-header>
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Cart List</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================Cart Area =================-->
+  <section class="cart_area section_padding">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of proudacts; let i=index;" >
+              <td >
+                <div class="media" >
+                  <div class="d-flex">
+                    <img [src]="c.image" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <p>{{c.name}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h5>{{c.price}}</h5>
+              </td>
+              <td>
+                <div class="product_count">
+
+
+
+                  <span class="input-number-decrement" style="display:block;cursor:pointer" (click)="decrese($event,c)" >-</span>
+
+                  <input class="input-number" style="display:inline-block" value="1" type="text" #newww  min="0" max="10">
+
+                  <span class="input-number-increment" style="display:block;cursor:pointer" (click)="incrses($event,c)">+</span>
+                </div>
+              </td>
+              <td>
+                <h5>{{calc}}</h5>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+<!--            <a class="btn_1" href="#">Continue Shopping</a>-->
+            <button class="btn btn-primary" style="cursor:pointer" (click)="addOrder()" >Proceed to checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Cart Area =================-->
+</main>>
+<app-footer></app-footer>
