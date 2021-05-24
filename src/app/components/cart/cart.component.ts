@@ -11,7 +11,7 @@ export class CartComponent implements OnInit {
     calc: any = 120;
     proudacts: any;
     productsIds = [];
-    quantity: any = 1;
+    //quantity: any = 1;
 
 
     //uuu=["60a2faf862a5fb33b80f86be","60a820c342df362b20b784a5","ooooooooooooooooooo"];
@@ -48,7 +48,8 @@ export class CartComponent implements OnInit {
     incrses(e: any, c: any) {
         let nextsibling;
         let total;
-        var x = e.target.parentNode.children[1].value = ++this.counter;
+       // let ff=0;
+        let x = e.target.parentNode.children[1].value = ++this.counter;
         // console.log(x=x++);
         total = c.price * x;
         //  console.log(e.target.parentNode.parentNode.nextSibling)
@@ -74,11 +75,14 @@ export class CartComponent implements OnInit {
         let total;
         // console.log(yy);
 
-        if (this.quantity > 0) {
-            var x = e.target.parentNode.children[0].value = --this.counter;
+        if (this.counter > 0) {
+            let x = e.target.parentNode.children[0].value =--this.counter;
+            console.log(e.target.parentNode.children[0]);
+            console.log(x)
             total = c.price * x;
             nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
 
+            console.log(nextsibling);
 
         }
         // // var x=  this.value--;

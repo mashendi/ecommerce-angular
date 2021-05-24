@@ -46,11 +46,13 @@
               <td>
                 <div class="product_count">
 
-                  <span class="input-number-decrement" style="display:block;cursor:pointer" (click)="decrese($event,c)" > <i class="ti-minus"></i></span>
 
-                  <input class="input-number" value="1" type="text" #newww  min="0" max="10">
 
-                  <span class="input-number-increment" style="display:block;cursor:pointer" (click)="incrses($event,c)"> <i class="ti-plus"></i></span>
+                  <span class="input-number-decrement" style="display:block;cursor:pointer" (click)="decrese($event,c)" >-</span>
+
+                  <input class="input-number" style="display:inline-block" value="1" type="text" #newww  min="0" max="10">
+
+                  <span class="input-number-increment" style="display:block;cursor:pointer" (click)="incrses($event,c)">+</span>
                 </div>
               </td>
               <td>
