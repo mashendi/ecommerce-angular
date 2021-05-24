@@ -13,5 +13,4 @@ export class HeroComponent implements OnInit {
   }
 
   @Input() hero_title:any
-
 }

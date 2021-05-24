@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,13 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
 
-  constructor( private myClient:HttpClient) { }
+  constructor(private myClient: HttpClient) { }
 
   baseUrl = "http://localhost:5000/api";
 
-  Login(user:any){
-  
-    return this.myClient.post(this.baseUrl+"/login", user,{withCredentials:true})
+  Register(user: any) {
+    return this.myClient.post(this.baseUrl + "/register", user)
   }
 
+  Login(user:any){
+    return this.myClient.post(this.baseUrl+"/login", user,{withCredentials:true})
+  }
 }
