@@ -19,6 +19,8 @@ import { IndexComponent } from './components/dashboard/index/index.component';
 import { EditComponent } from './components/dashboard/edit/edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewComponent } from './components/dashboard/new/new.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,8 @@ import { NewComponent } from './components/dashboard/new/new.component';
         IndexComponent,
         EditComponent,
         NewComponent,
+        ShopComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,
