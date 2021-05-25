@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-<main>
-    <!-- Hero Area Start-->
+ <main> 
+     <!-- Hero Area Start -->
     <div class="slider-area ">
         <div class="single-slider slider-height2 d-flex align-items-center">
             <div class="container">
@@ -16,7 +16,6 @@
             </div>
         </div>
     </div>
-    <!--================ confirmation part start =================-->
     <section class="confirmation_part section_padding">
       <div class="container" >
         <div class="row">
@@ -30,10 +29,10 @@
               <h4>order info</h4>
               <ul>
                 <li>
-                  <p>order number</p><span>: 60235</span>
+                  <p>order number</p><span>: {{order._id}}</span>
                 </li>
                 <li>
-                  <p>date</p><span>: Oct 03, 2017</span>
+                  <p>date</p><span>: {{order.created_at}}</span>
                 </li>
                 <li>
                   <p>total</p><span>: USD {{order.totalPrice}}</span>
@@ -47,39 +46,16 @@
           <div class="col-lg-6 col-lx-4">
             <div class="single_confirmation_details">
               <h4>Billing Address</h4>
-              <ul>
-                <li>
-                  <p>Street</p><span>: 56/8</span>
-                </li>
-                <li>
-                  <p>city</p><span>: Los Angeles</span>
-                </li>
-                <li>
-                  <p>country</p><span>: United States</span>
-                </li>
-                <li>
-                  <p>postcode</p><span>: 36952</span>
-                </li>
-              </ul>
+              
+                  <p>Adress</p><span>: {{order.user.address}}</span>
+              
+                
             </div>
           </div>
           <div class="col-lg-6 col-lx-4">
             <div class="single_confirmation_details">
               <h4>shipping Address</h4>
-              <ul>
-                <li>
-                  <p>Street</p><span>: 56/8</span>
-                </li>
-                <li>
-                  <p>city</p><span>: Los Angeles</span>
-                </li>
-                <li>
-                  <p>country</p><span>: United States</span>
-                </li>
-                <li>
-                  <p>postcode</p><span>: 36952</span>
-                </li>
-              </ul>
+              <p>Adress</p><span>: {{order.user.address}}</span>
             </div>
           </div>
         </div>
@@ -122,6 +98,5 @@
         </div>
       </div>
     </section>
-    <!--================ confirmation part end =================-->
-</main>
+ </main> 
 <app-footer></app-footer>

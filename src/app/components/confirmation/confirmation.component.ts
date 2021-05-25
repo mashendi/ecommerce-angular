@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { from } from 'rxjs';
 import{ConfirmationService} from 'src/app/services/confirmation.service'
 
 @Component({
@@ -9,21 +7,27 @@ import{ConfirmationService} from 'src/app/services/confirmation.service'
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-  id:any;
   order:any;
 
-  constructor(private myService:ConfirmationService,route:ActivatedRoute) {
-    this.id = route.snapshot.params.id;
+  constructor(private myService:ConfirmationService) {
+    // this.id = route.snapshot.params.id;
 
    }
 
   ngOnInit(): void {
-    this.myService.orderDetails(this.id).subscribe(
-      (res)=>{this.order=res},
-      (err)=>{console.log(err)}
-      
+    const user = window.localStorage.getItem("user")||"{}";
+    const userId =JSON.parse(user).userId;
 
+
+    this.myService.orderByUserId(userId).subscribe(
+      
+      (res)=>{
+        this.order=res
+        console.log(res)
+      },
+      (err)=>{console.log(err)} 
     )
+   
     
 
   }

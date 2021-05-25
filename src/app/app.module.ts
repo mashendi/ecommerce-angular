@@ -10,12 +10,10 @@ import {HttpClientModule} from '@angular/common/http'
 import { from } from 'rxjs';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { AppRoutingModule } from './app-routing.module';
-import{AllordersComponent} from './components/allorders/allorders.component'
-import {OorderComponent} from './components/oorder/oorder.component'
+
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent,  ConfirmationComponent, HeroComponent,AllordersComponent,OorderComponent],
-  imports: [BrowserModule, FontAwesomeModule,HttpClientModule, AppRoutingModule],
+  declarations: [AppComponent, HeaderComponent, FooterComponent,  ConfirmationComponent, HeroComponent],
+  imports: [BrowserModule, FontAwesomeModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -6,16 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConfirmationService {
 
-  constructor(private myclient:HttpClient) { }
+  constructor(private myClient:HttpClient) { }
   baseURL="http://localhost:5000/api/orders"
-
-  getAlorderDetails(){
-    return this.myclient.get(this.baseURL)
-  }
   
-  orderDetails(id:any){
+
+  orderByUserId(userId:any){
     // return this.myclient.get(this.baseURL,id)
-    return this.myclient.get(this.baseURL+'/'+id);
+    return this.myClient.get(this.baseURL+'?userId='+userId);
 
   }
 }
