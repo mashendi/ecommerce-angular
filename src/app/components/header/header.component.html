@@ -1,76 +1,77 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Watch shop | eCommers</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Watch shop | Ecomeers</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-  <!-- CSS here -->
-  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="/assets/css/flaticon.css">
-  <link rel="stylesheet" href="/assets/css/slicknav.css">
-  <link rel="stylesheet" href="/assets/css/animate.min.css">
-  <link rel="stylesheet" href="/assets/css/magnific-popup.css">
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
-  <link rel="stylesheet" href="/assets/css/themify-icons.css">
-  <link rel="stylesheet" href="/assets/css/slick.css">
-  <link rel="stylesheet" href="/assets/css/nice-select.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/slicknav.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
 <header>
-  <!-- Header Start -->
-  <div class="header-area">
-    <div class="main-header header-sticky">
-      <div class="container-fluid">
-        <div class="menu-wrapper">
-          <!-- Logo -->
-          <div class="logo">
-            <a href="index.html"><img src="/assets/img/logo/logo.png" alt=""></a>
-          </div>
-          <!-- Main-menu -->
-          <div class="main-menu d-none d-lg-block">
-            <nav>
-              <ul id="navigation">
-                <li><a routerLink="">Home</a></li>
-                <li><a href="shop.html">shop</a></li>
-                <li><a href="about.html">about</a></li>
-                <li><a href="#">Pages</a>
-                  <ul class="submenu">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="elements.html">Element</a></li>
-                    <li><a href="confirmation.html">Confirmation</a></li>
-                    <li><a href="checkout.html">Product Checkout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- Header Right -->
-          <div class="header-right">
-            <ul>
-              <li>
-                <div class="nav-search search-switch">
-                  <span class="flaticon-search"></span>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a routerLink="/home"><img src="/assets/img/logo/logo.png" alt=""></a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-menu d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a routerLink="/home">Home</a></li>
+                                <li><a href="#">shop</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a routerLink="/dashboard/products" *ngIf="isAdmin">Admin Dashboard</a>
+                                    <ul class="submenu">
+                                        <li><a routerLink="/dashboard/products">Products</a></li>
+                                        <li><a routerLink="/dashboard/orders">Orders</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Header Right -->
+                    <div class="header-right">
+                        <ul>
+                            <li>
+                                <div class="nav-search search-switch">
+                                    <span class="flaticon-search"></span>
+                                </div>
+                            </li>
+                            <li *ngIf="loggedUser.username; else guestBlk"><a routerLink=""
+                                                                              (click)="handleLogout()"><span>Logout</span></a>
+                            </li>
+                            <ng-template #guestBlk><a class="text-black"
+                                                      routerLink="/login"><span>Login | register</span></a>
+                            </ng-template>
+                            <li><a routerLink="/cart"><span class="flaticon-shopping-cart"></span></a></li>
+                        </ul>
+                    </div>
                 </div>
-              </li>
-              <li *ngIf="loggedUser.username; else guestBlk"><a routerLink="" (click)="handleLogout()"><span>Logout</span></a></li>
-              <ng-template #guestBlk><a class="text-black" routerLink="login" ><span>Login | register</span></a></ng-template>
-              <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a></li>
-            </ul>
-          </div>
+                <!-- Mobile Menu -->
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
         </div>
-        <!-- Mobile Menu -->
-        <div class="col-12">
-          <div class="mobile_menu d-block d-lg-none"></div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Header End -->
+    <!-- Header End -->
 </header>

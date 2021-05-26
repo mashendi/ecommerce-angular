@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
     selector: 'app-index',
@@ -8,12 +8,30 @@ import { ProductService } from '../../services/product.service';
 })
 export class IndexComponent implements OnInit {
     products: any = [];
-    constructor(private productService: ProductService) {}
+
+    constructor(private productService: ProductService) {
+    }
 
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
             (data) => (this.products = data),
             (err) => console.error(err)
         );
+    }
+
+    deleteProduct(e: any, id: string) {
+        e.preventDefault()
+        this.productService.deleteProduct(id).subscribe(
+            (data: any) => {
+                if (data.ok) {
+                    this.products = this.products.filter((product: any) => {
+                        return product._id !== id
+                    })
+                }
+            },
+            (err) => {
+                console.log(err)
+            }
+        )
     }
 }

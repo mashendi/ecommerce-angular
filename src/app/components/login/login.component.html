@@ -1,8 +1,5 @@
-  
-  <app-header></app-header>
-  <app-hero [hero_title]="title" ></app-hero>
-  <!--================login_part Area =================-->
-  <section class="login_part section_padding ">
+<app-header></app-header>
+<section class="login_part section_padding ">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6">
@@ -11,7 +8,7 @@
                         <h2>New to our Shop?</h2>
                         <p>There are advances being made in science and technology
                             everyday, and a good example of this is the</p>
-                        <a href="#" class="btn_3">Create an Account</a>
+                        <a routerLink="/register" class="btn_3">Create an Account</a>
                     </div>
                 </div>
             </div>
@@ -20,20 +17,24 @@
                     <div class="login_part_form_iner">
                         <h3>Welcome Back ! <br>
                             Please Sign in now</h3>
-                        <form [formGroup]="validations"  class="row contact_form" method="post" novalidate="novalidate" (ngSubmit)="login()" >
+                        <form [formGroup]="validations" class="row contact_form" method="post" novalidate="novalidate"
+                              (ngSubmit)="login()">
                             <div class="col-md-12 form-group p_star">
-                                <input formControlName="email" [(ngModel)]="email" type="text" class="form-control" id="email" name="email" placeholder="Email">
-                                <small  *ngIf="Email" class="text-danger"> Email is Required </small>
+                                <input formControlName="email" [(ngModel)]="email" type="text" class="form-control"
+                                       id="email" name="email" placeholder="Email">
+                                <small *ngIf="Email" class="text-danger"> Email is Required </small>
                             </div>
 
                             <div class="col-md-12 form-group p_star">
-                                <input formControlName="password" [(ngModel)]="password" type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                <small *ngIf="Password" class="text-danger"> Password is Required (minimum length is 6 characters) </small>
+                                <input formControlName="password" [(ngModel)]="password" type="password"
+                                       class="form-control" id="password" name="password" placeholder="Password">
+                                <small *ngIf="Password" class="text-danger"> Password is Required (minimum length is 6
+                                    characters) </small>
                                 <small *ngIf="message" class="text-danger">{{message}}</small>
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <input type="submit" value="Log in"  class="btn w-100 text-center" [disabled]="Disable" />
+                                <input type="submit" value="Log in" class="btn w-100 text-center" [disabled]="Disable"/>
                             </div>
                         </form>
                     </div>
@@ -42,4 +43,3 @@
         </div>
     </div>
 </section>
-<!--================login_part end =================-->

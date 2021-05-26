@@ -9,44 +9,33 @@ import {CartService} from '../../services/cart.service'
 export class CartComponent implements OnInit {
     counter: any = 1;
     calc: any = 120;
-    proudacts: any;
-    productsIds = [];
-    //quantity: any = 1;
-
-
-    //uuu=["60a2faf862a5fb33b80f86be","60a820c342df362b20b784a5","ooooooooooooooooooo"];
-
-    // setitems=localStorage.setItem("id",JSON.stringify(this.uuu));
-    // idproducts=JSON.parse(<any>localStorage.getItem('id'));
+    products: any = [];
+    productsIds: string  = '';
 
     constructor(private myService: CartService) {
     }
 
     ngOnInit(): void {
-        if (window.localStorage.id)
-            this.productsIds = JSON.parse(<string>window.localStorage.getItem('id'))
+        if (window.localStorage.cart_products) {
+            console.log(window.localStorage.getItem("cart_products"))
+            this.productsIds = <string>window.localStorage.getItem('cart_products')
+        }
 
-        const queryString = this.productsIds.join(",");
-        console.log(queryString)
-        this.myService.getProducts(queryString).subscribe(
+        console.log(this.productsIds)
+        this.myService.getProducts(this.productsIds).subscribe(
             (req) => {
-                // console.log(req);
-                this.proudacts = req;
-                // console.log(this.proudacts)
-
+                this.products = req;
             },
 
             (err) => {
                 console.log(err)
             }
         )
-        // this.x = localStorage.setItem("product",  JSON.stringify(this.fruits));
-
     }
+
     decrese(e: any, c: any) {
         let nextsibling;
         let total;
-        // console.log(yy);
 
         if (this.counter > 0) {
             let x = e.target.parentNode.children[1].value = --this.counter;
@@ -67,7 +56,7 @@ export class CartComponent implements OnInit {
     incrses(e: any, c: any) {
         let nextsibling;
         let total;
-       // let ff=0;
+        // let ff=0;
         let x = e.target.parentNode.children[1].value = ++this.counter;
         // console.log(x=x++);
         total = c.price * x;
@@ -87,8 +76,6 @@ export class CartComponent implements OnInit {
         //console.log(e);
 
     }
-
-
 
 
     //add addOrder

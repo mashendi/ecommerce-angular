@@ -17,4 +17,8 @@ export class UsersService {
   Login(user:any){
     return this.myClient.post(this.baseUrl+"/login", user,{withCredentials:true})
   }
+
+  getUserById(id: string) {
+      return this.myClient.get(this.baseUrl+"/users/"+id)
+  }
 }

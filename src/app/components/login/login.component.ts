@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from './../../Services/users.service';
+import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 
 
@@ -11,10 +11,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private myservice:UsersService, private router:Router) { }
+  constructor(private usersService:UsersService, private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   title:string = "Login";
   AuthUser = {}
@@ -37,17 +36,17 @@ export class LoginComponent implements OnInit {
         password:this.password
       }
 
-    this.myservice.Login(user).subscribe(
-      (res)=>{ 
-        this.AuthUser = res  
+    this.usersService.Login(user).subscribe(
+      (res)=>{
+        this.AuthUser = res
         localStorage.setItem("user",JSON.stringify(this.AuthUser))
-        // this.router.navigateByUrl("/home")      
+        this.router.navigate(["/home"]);
       },
       (err)=>{
         this.message=err.error.error;
       }
-    ); 
-  }  
+    );
+  }
 }
 
   get Email(){
