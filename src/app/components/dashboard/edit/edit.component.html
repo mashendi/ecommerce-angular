@@ -1,1 +1,71 @@
-<p>edit works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="row mt-4">
+        <form
+            class="col-8 mx-auto"
+            (ngSubmit)="handleUpdateProduct()"
+            [formGroup]="formValidation"
+        >
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    class="form-control {{ nameError ? 'is-invalid' : '' }}"
+                    id="name"
+                    [value]="product.name"
+                    [(ngModel)]="name"
+                    formControlName="name"
+                />
+                <p *ngIf="nameError" class="invalid-feedback">
+                    Name is required
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input
+                    type="number"
+                    class="form-control {{ priceError ? 'is-invalid' : '' }}"
+                    id="price"
+                    min="0"
+                    [(ngModel)]="price"
+                    [value]="product.price"
+                    formControlName="price"
+                />
+                <p *ngIf="priceError" class="invalid-feedback">
+                    Price is required
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                    class="form-control {{ descriptionError ? 'is-invalid' : '' }}"
+                    id="description"
+                    rows="3"
+                    [(ngModel)]="description"
+                    [value]="product.description"
+                    formControlName="description"
+                ></textarea>
+                <p *ngIf="descriptionError" class="invalid-feedback">
+                    Description is required
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="image">Product Image</label>
+                <input
+                    type="file"
+                    class="form-control-file {{
+                        imageError ? 'is-invalid' : ''
+                    }}"
+                    id="image"
+                    [(ngModel)]="image"
+                    (change)="onFileSelected($event)"
+                    formControlName="image"
+                />
+                <p *ngIf="imageError" class="invalid-feedback">
+                    Image is required
+                </p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
+        </form>
+    </div>
+</div>

@@ -1,22 +1,24 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
-url="http://localhost:5001/api/orders"
-  constructor(private httpClient:HttpClient) { }
+    ordersUrl = "http://localhost:5000/api/orders"
+    productsUrl = "http://localhost:5000/api/products"
 
-  getProducts( ids:string ){
-    return this.httpClient.get(`http://localhost:5001/api/products?ids=${ids}`)
-  }
+    constructor(private httpClient: HttpClient) {
+    }
 
+    getProducts(ids: string) {
+        return this.httpClient.get(`${this.productsUrl}?ids=${ids}`)
+    }
 
-  getOrder(orders:any){
-    return this.httpClient.post(this.url,orders);
+    getOrder(orders: any) {
+        return this.httpClient.post(this.ordersUrl, orders);
 
-  }
+    }
 
 
 }

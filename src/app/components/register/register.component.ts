@@ -1,4 +1,4 @@
-import { UsersService } from './../../Services/users.service';
+import { UsersService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { toBase64 } from '../../helpers/general_functions'

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../../services/product.service';
-import { toBase64 } from '../../../helpers/general_functions';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from "@angular/router";
+import {ProductService} from '../../../services/product.service';
+import {toBase64} from '../../../helpers/general_functions';
 
 @Component({
     selector: 'app-new',
@@ -20,9 +21,11 @@ export class NewComponent implements OnInit {
     descriptionError: boolean = false;
     imageError: boolean = false;
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService, private router: Router) {
+    }
 
     ngOnInit(): void {}
+
     formValidation = new FormGroup({
         name: new FormControl('', [Validators.required]),
         price: new FormControl('', [Validators.required]),
@@ -36,6 +39,7 @@ export class NewComponent implements OnInit {
             this.selectedFile = await toBase64(file);
         }
     }
+
     handleAddProduct() {
         if (this.formValidation.valid) {
             this.product = {
@@ -44,6 +48,13 @@ export class NewComponent implements OnInit {
                 description: this.description,
                 image: this.selectedFile,
             };
+
+            this.productService.addProduct(this.product).subscribe(
+                (data) => {
+                    this.router.navigate(['/dashboard/products'])
+                },
+                (err) => console.error(err)
+            );
         } else {
             // check each input error
             if (!this.formValidation.controls.name.valid) {
@@ -59,10 +70,5 @@ export class NewComponent implements OnInit {
                 this.imageError = true;
             }
         }
-
-        this.productService.addProduct(this.product).subscribe(
-            (data) => {},
-            (err) => console.error(err)
-        );
     }
 }
