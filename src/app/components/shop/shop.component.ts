@@ -7,7 +7,6 @@ import { ProductService } from '../../services/product.service';
     styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-    hero_title: string = 'Shop';
     products: any = [];
     constructor(private productService: ProductService) {}
 
