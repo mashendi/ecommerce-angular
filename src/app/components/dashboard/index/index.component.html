@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row justify-content-end">
+        <div>
+            <a routerLink="/dashboard/products/new" class="btn btn-primary m-3">Add Product
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products; index as i">
+                    <td>{{ i + 1}}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <a routerLink="/dashboard/products/{{product._id}}/edit" class="btn btn-secondary btn-sm mr-1" href="#">Edit</a>
+                        <a class="btn btn-warning btn-sm" href="#" (click)="deleteProduct($event, product._id)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<app-hero [hero_title]="hero_title"></app-hero>
+
+<div class="section-padding30">
+    <div class="container">
+        <div class="row">
+            <app-product
+                class="col-xl-4 col-lg-4 col-md-6 col-sm-6"
+                *ngFor="let product of products"
+                [product]="product"
+                [addToCart]="true"
+            >
+            </app-product>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="single-new-pro mb-30 text-center" *ngIf="!addToCart">
+  <div class="product-img">
+    <img src="/assets/img/gallery/new_product1.png" alt="" />
+    <!-- <img src="http://localhost:5000/public/uploads/products/{{product.image}}" alt="" /> -->
+  </div>
+  <div class="product-caption">
+    <h3>
+      <a href="product_details.html">{{ product.name }}</a>
+    </h3>
+    <span>{{ product.price }} $</span>
+  </div>
+</div>
+
+<div class="single-popular-items mb-50 text-center" *ngIf="addToCart">
+  <div class="popular-img">
+    <img src="assets/img/gallery/popular1.png" alt="" />
+    <!-- <img src="http://localhost:5000/public/uploads/products/{{product.image}}" alt="" /> -->
+    <div class="img-cap">
+      <span (click)="addItem(product)">Add to cart</span>
+    </div>
+  </div>
+  <div class="popular-caption">
+    <h3>
+      <a href="product_details.html">{{product.name}}</a>
+    </h3>
+    <span>{{product.price}} $</span>
+  </div>
+</div>
