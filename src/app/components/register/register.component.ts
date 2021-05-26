@@ -2,6 +2,7 @@ import { UsersService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { toBase64 } from '../../helpers/general_functions'
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,52 +10,47 @@ import { toBase64 } from '../../helpers/general_functions'
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private myService: UsersService) { }
+  constructor(private usersService: UsersService, private router:Router) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   ourValidation = new FormGroup({
     username: new FormControl("", Validators.required),
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required, Validators.min(6)]),
     image: new FormControl("", Validators.required),
     gender: new FormControl("", Validators.required)
-
-
   })
 
+  title: string = "Register";
+  username: any;
+  email: any;
+  password: any;
+  image: any;
+  gender: any;
 
-  title: string = "Register"
-  img_file: any
-  username: any
-  email: any
-  password: any
-  image: any
-  gender: any
+  usernameError: any;
+  emailError: any;
+  passwordError: any;
+  imageError: any;
+  genderError: any;
 
   get UserName() {
-
     return this.ourValidation.controls.username.valid;
   }
 
   get Email() {
-
     return this.ourValidation.controls.email.valid;
   }
 
   get Password() {
-
     return this.ourValidation.controls.password.valid;
   }
 
   get Image() {
-
     return this.ourValidation.controls.image.valid;
   }
 
   get Gender() {
-
     return this.ourValidation.controls.gender.valid;
   }
 
@@ -86,12 +82,15 @@ export class RegisterComponent implements OnInit {
         gender: this.selectedGender,
 
       }
-      this.myService.Register(user).subscribe(
+      this.usersService.Register(user).subscribe(
         (data: any) => {
-
+            if (data.ok)
+                this.router.navigate(['/login']);
         },
         (err: any) => {
-          console.log(err)
+          if (err.error.email){
+              console.log(err.error.email)
+          }
         }
 
       );
