@@ -5,10 +5,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
-
 import { IndexComponent } from './components/dashboard/index/index.component';
 import { EditComponent } from './components/dashboard/edit/edit.component';
 import { NewComponent } from './components/dashboard/new/new.component';
+import {OrderindexComponent} from './components/dashboard/order/orderindex/orderindex.component';
 
 
 const routes: Routes = [
@@ -20,10 +20,11 @@ const routes: Routes = [
   {path: 'dashboard/products', component: IndexComponent},
   {path: 'dashboard/products/new', component: NewComponent},
   {path: 'dashboard/products/:id/edit', component: EditComponent},
+  {path: 'dashboard/orders', component: OrderindexComponent},
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+ imports: [RouterModule.forRoot(routes)],
+ exports: [RouterModule]
 })
 export class AppRoutingModule { }
