@@ -59,18 +59,27 @@ export class CartComponent implements OnInit {
 
     //add addOrder
     addOrder(e:any) {
-       // let  nextsibling = e.target.parentNode.previousSibling.querySelector('.totle');
-       // console.log(nextsibling)
+        // let  nextsibling = e.target.parentNode.previousSibling.querySelector('.totle');
+        // console.log(nextsibling)
 
         //let userId = JSON.parse(<string>window.localStorage.getItem('id'))
-        let user=window.localStorage.getItem("user");
+
         // @ts-ignore
-        let x= user.split(',')
+        let x=this.productsIds;
+        let y =x.split(",")
+        console.log(x.split(","))
+        // let user=window.localStorage.getItem("user");
+        // let user = localStorage.getItem('user');
+        let userObj=JSON.parse(<string>window.localStorage.getItem("user"))
+        console.log(userObj)
+
+        let userId=userObj.userId;
+        console.log(userId)
         let order = {
-            user:"60a84bf33ab4c510c8329f3f" ,  //local storge
+            user:userId ,  //local storge
             products: [
                 {
-                    product_id:this.productsIds,
+                    product_id:y,
                     quantity: this.counter
                 }
             ],
