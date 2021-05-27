@@ -8,9 +8,10 @@ import {CartService} from '../../services/cart.service'
 })
 export class CartComponent implements OnInit {
     counter: any = 1;
-    calc: any = 120;
+    calc: any=0 ;
     products: any = [];
     productsIds: string  = '';
+    total:number=0;
 
     constructor(private myService: CartService) {
     }
@@ -25,77 +26,61 @@ export class CartComponent implements OnInit {
         this.myService.getProducts(this.productsIds).subscribe(
             (req) => {
                 this.products = req;
+                console.log(this.products)
+                this.totalprice(this.products)
+
             },
 
             (err) => {
                 console.log(err)
             }
         )
+
+
     }
 
-    decrese(e: any, c: any) {
-        let nextsibling;
-        let total;
-
-        if (this.counter > 0) {
-            let x = e.target.parentNode.children[1].value = --this.counter;
-            console.log(e.target.parentNode.children[1]);
-            console.log(x)
-            total = c.price * x;
-            nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
-
-            console.log(nextsibling);
-
+    totalprice(params:any) {
+        for(let i=0 ; i<params.length; i++){
+            this.total+=params[i].price
         }
-        // // var x=  this.value--;
-
-
+        console.log(this.total);
     }
 
-
-    incrses(e: any, c: any) {
+    onChange(e:any,c:any){
+        let x = window.localStorage.getItem("cart_products");
         let nextsibling;
         let total;
-        // let ff=0;
-        let x = e.target.parentNode.children[1].value = ++this.counter;
-        // console.log(x=x++);
-        total = c.price * x;
-        //  console.log(e.target.parentNode.parentNode.nextSibling)
+        total = c.price * e.target.value;
         nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
-        console.log(nextsibling);
-
-
-        //  console.log(tt);
-        // ++this.quantity
-        // console.log(event.price*this.quantity)
-        // //  this.counter++;
-        // //
-        // //  var x = ++this.counter;
-
-
-        //console.log(e);
-
+        // this.calc=nextsibling
+        this.total+=c.price
+        console.log(this.total);
     }
-
 
     //add addOrder
-    addOrder() {
+    addOrder(e:any) {
+       // let  nextsibling = e.target.parentNode.previousSibling.querySelector('.totle');
+       // console.log(nextsibling)
+
         //let userId = JSON.parse(<string>window.localStorage.getItem('id'))
-
-        let orders = {
-            user: "60aae78105cfa58ff2efc5ee",  //local storge
-            products: {
-                product_id: this.productsIds,
-                quantity: this.counter
-
-            },
-            totalPrice: this.calc,
-
+        let user=window.localStorage.getItem("user");
+        // @ts-ignore
+        let x= user.split(',')
+        let order = {
+            user:"60a84bf33ab4c510c8329f3f" ,  //local storge
+            products: [
+                {
+                    product_id:this.productsIds,
+                    quantity: this.counter
+                }
+            ],
+            totalPrice:this.total,
         }
 
-        this.myService.getOrder(orders).subscribe();
-        console.log(orders)
+        this.myService.addOrder(order).subscribe();
+        console.log(order)
     }
+
 
 
 }
