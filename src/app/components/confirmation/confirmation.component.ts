@@ -8,7 +8,7 @@ import{ConfirmationService} from 'src/app/services/confirmation.service'
 })
 export class ConfirmationComponent implements OnInit {
   order:any;
-
+  
   constructor(private myService:ConfirmationService) {
     // this.id = route.snapshot.params.id;
 
