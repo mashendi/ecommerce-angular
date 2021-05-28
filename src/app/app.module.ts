@@ -22,6 +22,7 @@ import { NewComponent } from './components/dashboard/new/new.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { AboutComponent } from './components/about/about.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { OrderindexComponent } from './components/dashboard/order/orderindex/orderindex.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
         ShopComponent,
         AboutComponent,
         ConfirmationComponent,
+        OrderindexComponent,
     ],
     imports: [
 
