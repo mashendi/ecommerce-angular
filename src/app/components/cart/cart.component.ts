@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service'
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-cart',
@@ -13,22 +14,19 @@ export class CartComponent implements OnInit {
     productsIds: string  = '';
     total:number=0;
 
-    constructor(private myService: CartService) {
+    constructor(private myService: CartService, private router: Router) {
     }
 
     ngOnInit(): void {
         if (window.localStorage.cart_products) {
-            console.log(window.localStorage.getItem("cart_products"))
             this.productsIds = <string>window.localStorage.getItem('cart_products')
         }
 
-        console.log(this.productsIds)
         this.myService.getProducts(this.productsIds).subscribe(
             (req) => {
                 this.products = req;
-                console.log(this.products)
                 this.totalprice(this.products)
-
+                this.router.navigate(['/confirmation'])
             },
 
             (err) => {
