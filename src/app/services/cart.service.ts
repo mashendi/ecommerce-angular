@@ -15,7 +15,7 @@ export class CartService {
         return this.httpClient.get(`${this.productsUrl}?ids=${ids}`)
     }
 
-    getOrder(orders: any) {
+    addOrder(orders: any) {
         return this.httpClient.post(this.ordersUrl, orders);
 
     }
