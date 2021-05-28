@@ -9,6 +9,9 @@ import { IndexComponent } from './components/dashboard/index/index.component';
 import { EditComponent } from './components/dashboard/edit/edit.component';
 import { NewComponent } from './components/dashboard/new/new.component';
 import {OrderindexComponent} from './components/dashboard/order/orderindex/orderindex.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { AboutComponent } from './components/about/about.component';
+import {ConfirmationComponent} from "./components/confirmation/confirmation.component";
 
 
 const routes: Routes = [
@@ -17,6 +20,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'shop', component: ShopComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'confirmation', component: ConfirmationComponent},
   {path: 'dashboard/products', component: IndexComponent},
   {path: 'dashboard/products/new', component: NewComponent},
   {path: 'dashboard/products/:id/edit', component: EditComponent},
