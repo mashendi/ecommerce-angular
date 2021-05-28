@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Date</th>
+                    <th>TotalPrice</th>
+                    <th>Products</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders; index as i">
+                    <td>{{ i + 1}}</td>
+                    <td>{{ order.user.username }}</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>${{order.totalPrice}}</td>
+                    <td>
+                        <div *ngFor="let product of order.products">
+                            {{product.name}}
+                        </div>
+                    </td>
+                    <td>
+                       <select class="form-select  mb-3" (change)="updateOrder($event, order._id)">
+                           <option value="pending"  [selected]="order.status == 'pending'"> pending </option>
+                           <option value="accepted" [selected]="order.status == 'accepted'"> accepted </option>
+                           <option value="rejected" [selected]="order.status == 'rejected'"> rejected </option>
+                       </select> 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
