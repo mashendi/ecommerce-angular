@@ -7,7 +7,7 @@
                     <th>#</th>
                     <th>Username</th>
                     <th>Date</th>
-                    <th>TotalPrice</th>
+                    <th>Total price</th>
                     <th>Products</th>
                     <th>Status</th>
                 </tr>
@@ -17,7 +17,7 @@
                     <td>{{ i + 1}}</td>
                     <td>{{ order.user.username }}</td>
                     <td>{{ order.created_at }}</td>
-                    <td>${{order.totalPrice}}</td>
+                    <td>$ {{order.totalPrice}}</td>
                     <td>
                         <div *ngFor="let product of order.products">
                             {{product.name}}
@@ -28,7 +28,7 @@
                            <option value="pending"  [selected]="order.status == 'pending'"> pending </option>
                            <option value="accepted" [selected]="order.status == 'accepted'"> accepted </option>
                            <option value="rejected" [selected]="order.status == 'rejected'"> rejected </option>
-                       </select> 
+                       </select>
                     </td>
                 </tr>
             </tbody>

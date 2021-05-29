@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-index',
@@ -9,13 +10,16 @@ import {ProductService} from '../../../services/product.service';
 export class IndexComponent implements OnInit {
     products: any = [];
 
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService, private route: ActivatedRoute) {
+        route.queryParams.subscribe(param => {
+            this.searchProducts(param.search)
+        });
     }
 
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
             (data) => (this.products = data),
-            (err) => console.error(err)
+            (err) => {}
         );
     }
 
@@ -30,7 +34,16 @@ export class IndexComponent implements OnInit {
                 }
             },
             (err) => {
-                console.log(err)
+            }
+        )
+    }
+
+    searchProducts(search: string) {
+        this.productService.getProducts(search).subscribe(
+            (data: any) => {
+                this.products = data
+            },
+            (err: any) => {
             }
         )
     }

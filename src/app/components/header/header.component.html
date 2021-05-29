@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Watch shop | Ecomeers</title>
+    <title>Watch shop | Ecommers</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -51,16 +51,20 @@
                     <!-- Header Right -->
                     <div class="header-right">
                         <ul>
-                            <li>
+<!--                            <li>-->
+<!--                                <div class="nav-search search-switch">-->
+<!--                                    <span class="flaticon-search"></span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+                            <li *ngIf="loggedUser.username; else guestBlk">
                                 <div class="nav-search search-switch">
-                                    <span class="flaticon-search"></span>
+                                    <input type="text" name="search" [(ngModel)]="search" />
+                                    <a href="#" (click)="handleSearch($event)"><span class="flaticon-search"></span></a>
                                 </div>
+                                <a routerLink="" (click)="handleLogout()"><span>Logout</span></a>
                             </li>
-                            <li *ngIf="loggedUser.username; else guestBlk"><a routerLink=""
-                                                                              (click)="handleLogout()"><span>Logout</span></a>
-                            </li>
-                            <ng-template #guestBlk><a class="text-black"
-                                                      routerLink="/login"><span>Login | register</span></a>
+                            <ng-template #guestBlk>
+                                <a class="text-black" routerLink="/login"><span>Login | register</span></a>
                             </ng-template>
                             <li><a routerLink="/cart"><span class="flaticon-shopping-cart"></span></a></li>
                         </ul>

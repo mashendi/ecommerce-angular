@@ -10,8 +10,8 @@ export class ProductService {
     constructor(private http: HttpClient) {
     }
 
-    getProducts() {
-        return this.http.get(this.BASE_URL);
+    getProducts(name: string = "") {
+        return this.http.get(`${this.BASE_URL}?search=${name}`);
     }
 
     addProduct(product: any) {

@@ -16,8 +16,6 @@ export class OrderService {
   }
 
   updateOrder(id:string , order:any){
-    console.log(order);
-    console.log(id);
     return this.http.put(`${this.BASE_URL}/${id}`, order)
   }
 

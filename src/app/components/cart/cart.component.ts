@@ -9,10 +9,10 @@ import {Router} from "@angular/router";
 })
 export class CartComponent implements OnInit {
     counter: any = 1;
-    calc: any=0 ;
+    calc: any = 0;
     products: any = [];
-    productsIds: string  = '';
-    total:number=0;
+    productsIds: string = '';
+    total: number = 0;
 
     constructor(private myService: CartService, private router: Router) {
     }
@@ -37,57 +37,47 @@ export class CartComponent implements OnInit {
 
     }
 
-    totalprice(params:any) {
-        for(let i=0 ; i<params.length; i++){
-            this.total+=params[i].price
+    totalprice(params: any) {
+        for (let i = 0; i < params.length; i++) {
+            this.total += params[i].price
         }
-        console.log(this.total);
     }
 
-    onChange(e:any,c:any){
+    onChange(e: any, c: any) {
         let x = window.localStorage.getItem("cart_products");
         let nextsibling;
         let total;
         total = c.price * e.target.value;
         nextsibling = e.target.parentNode.parentNode.nextSibling.children[0].textContent = total;
-        // this.calc=nextsibling
-        this.total+=c.price
+        this.total += c.price
         console.log(this.total);
     }
 
     //add addOrder
-    addOrder(e:any) {
-        // let  nextsibling = e.target.parentNode.previousSibling.querySelector('.totle');
-        // console.log(nextsibling)
-
-        //let userId = JSON.parse(<string>window.localStorage.getItem('id'))
-
+    addOrder(e: any) {
         // @ts-ignore
-        let x=this.productsIds;
-        let y =x.split(",")
+        let x = this.productsIds;
+        let y = x.split(",")
         console.log(x.split(","))
-        // let user=window.localStorage.getItem("user");
-        // let user = localStorage.getItem('user');
-        let userObj=JSON.parse(<string>window.localStorage.getItem("user"))
+        let userObj = JSON.parse(<string>window.localStorage.getItem("user"))
         console.log(userObj)
 
-        let userId=userObj.userId;
+        let userId = userObj.userId;
         console.log(userId)
         let order = {
-            user:userId ,  //local storge
+            user: userId,  //local storge
             products: [
                 {
-                    product_id:y,
+                    product_id: y,
                     quantity: this.counter
                 }
             ],
-            totalPrice:this.total,
+            totalPrice: this.total,
         }
 
         this.myService.addOrder(order).subscribe();
         console.log(order)
     }
-
 
 
 }
