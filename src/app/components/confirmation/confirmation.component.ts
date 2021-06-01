@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfirmationService} from 'src/app/services/confirmation.service'
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-confirmation',
@@ -9,7 +10,7 @@ import {ConfirmationService} from 'src/app/services/confirmation.service'
 export class ConfirmationComponent implements OnInit {
     order: any;
 
-    constructor(private myService: ConfirmationService) {
+    constructor(private confirmationService: ConfirmationService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -17,7 +18,7 @@ export class ConfirmationComponent implements OnInit {
         const userId = JSON.parse(user).userId;
 
 
-        this.myService.orderByUserId(userId).subscribe(
+        this.confirmationService.orderByUserId(userId).subscribe(
             (res) => {
                 this.order = res
             },
@@ -25,9 +26,11 @@ export class ConfirmationComponent implements OnInit {
                 console.log(err)
             }
         )
-
-
     }
 
-
+    clearOrder(e: any): void {
+        e.preventDefault();
+        window.localStorage.removeItem("cart_products");
+        this.router.navigate(['/home']);
+    }
 }
